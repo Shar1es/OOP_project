@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Tree App</title>
+{% endblock %}
+
+
+<!--Bloque body de la página principal.
+Si no existe un registro saca un texto,
+si no muestra la tabla-->
+{% block body %}
+<div class="content">
+    <h1 style="text-align: center">Tree database</h1>
+    {% if tasks|length < 1 %}
+    <h4 style="text-align: center">No hay árboles introducidos, introduce uno!</h4>
+    {% else %}
+    <table>
+        <tr>
+            <th>Especie</th>
+            <th>Diametro</th>
+            <th>Altura</th>
+            <th>Actions</th>
+        </tr>
+        {% for task in tasks %}
+            <tr>
+                <td>{{ task.species }}</td>
+                <td>{{ task.diameter }}</td>
+                <td>{{ task.height }}</td>
+                <td>{{ task.date_created.date() }}</td>
+                <td>
+                    <a href="/delete/{{task.id}}">Delete</a>
+                    <br>
+                    <a href="/update/{{task.id}}">Update</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+
+    <div class="form">
+        <form action="/" method="POST">
+            <input type="text" name="Especie" id="species">
+            <input type="text" name="Diametro" id="diameter">
+            <input type="text" name="Altura" id="height">
+            <input type="submit" value="Añadir árbol">
+        </form>
+    </div>
+</div>
+{% endblock %}
