@@ -98,8 +98,9 @@ def create_app(config=None):
 
 # Main code. Solo se corre cuando se corre directamente app.py 
 # Crea la base de datos si no existe 
+app = create_app()
 if __name__ == "__main__":
-    app = create_app()
+
     with app.app_context():
         db.create_all()
     app.run(debug=False)
