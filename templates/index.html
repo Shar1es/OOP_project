@@ -17,9 +17,9 @@ si no muestra la tabla-->
     <table>
         <tr>
             <th>Especie</th>
-            <th>Diametro</th>
-            <th>Altura</th>
-            <th>Actions</th>
+            <th>Diametro (cm)</th>
+            <th>Altura (dm)</th>
+            <th>Fecha</th>
         </tr>
         {% for task in tasks %}
             <tr>
@@ -40,8 +40,8 @@ si no muestra la tabla-->
     <div class="form">
         <form action="/" method="POST">
             <input type="text" name="Especie" id="species">
-            <input type="text" name="Diametro" id="diameter">
-            <input type="text" name="Altura" id="height">
+            <input type="number" name="Diametro" id="diameter">
+            <input type="number" name="Altura" id="height">
             <input type="submit" value="Añadir árbol">
         </form>
     </div>
